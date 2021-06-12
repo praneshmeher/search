@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Search</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <input class="search" type="text">
+        <div class="list" ></div>
+        <script>
+            const cities = []
+            const api = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+            fetch(api)
+            .then(response=>response.json())
+            .then(data=>cities.push(...data))
+
+            const input = document.querySelector('.search')
+            const list = document.querySelector('.list')
+            input.addEventListener('keyup',(e)=>{
+                const data = cities.filter((item)=>{
+                    return (item.city.toLowerCase().includes(input.value.toLowerCase()))
+                })
+                const html = data.map((item)=>{
+                    return `<li>
+                        City : ${item.city}
+                    </li>`
+                })
+                list.innerHTML = input.value ? html.join('') : ''
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,10 @@
+.search{
+    display: flex;
+    margin: 50px auto;
+}
+
+.list>li{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
