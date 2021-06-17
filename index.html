@@ -17,8 +17,9 @@
 
             const input = document.querySelector('.search')
             const list = document.querySelector('.list')
-            
-            input.addEventListener('keyup',(e)=>{
+            input.addEventListener('keyup', search)
+
+            function search(e){
                 const data = cities.filter((item)=>{
                     return (item.city.toLowerCase().includes(input.value.toLowerCase()))
                 })
@@ -28,7 +29,7 @@
                     </li>`
                 })
                 list.innerHTML = input.value ? html.join('') : ''
-            })
+            }
         </script>
 
     </body>
